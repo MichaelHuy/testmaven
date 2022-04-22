@@ -9,7 +9,7 @@ ext {
     mGroupId = "com.huyle"
     mArtifactId = "my-library2"
     mVersionCode = 1
-    mVersionName = "0.0.1"
+    mVersionName = "0.0.2"
 
     mLibraryName = "MyLibrary2"
     mLibraryDescription = "MyLibrary2 for simple things!"
