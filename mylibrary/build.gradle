@@ -71,15 +71,18 @@ afterEvaluate {
             }
         }
 
+        def localProperties = new Properties()
+        localProperties.load(new FileInputStream(rootProject.file("github.properties")))
+
+
         // 5. Update repository details and credentials.
         repositories {//MichaelHuy/testmaven
             maven {
                 name = "GitHubPackages"
                 url = uri("https://maven.pkg.github.com/MichaelHuy/testmaven")
                 credentials {
-                    username = githubProperties["gpr.usr"] as String? ?: System.getenv("GPR_USER")
-                    password = githubProperties["gpr.key"] as String? ?: System.getenv("GPR_API_KEY")
-            
+                    username = localProperties.getProperty("gpr.usr")
+                    password = localProperties.getProperty("gpr.key")
                 }
             }
         }
