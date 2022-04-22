@@ -39,7 +39,7 @@ jobs:
         run: bash ./gradlew mylibrary:build mylibrary2:build
 
       - name: Publish to GitHub Package Registry 🚀
-        run: bash ./gradlew :mylibrary:publish
+        run: bash ./gradlew :mylibrary:publish :mylibrary2:publish
         env:
           GPR_USER: ${{ github.actor }}
           GPR_KEY: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
