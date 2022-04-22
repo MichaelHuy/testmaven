@@ -32,7 +32,7 @@ jobs:
 
       - name: Set local properties
         env:
-          KS_PROPERTIES: ${{ secrets.GH_PROPERTIES }}
+          GH_PROPERTIES: ${{ secrets.GH_PROPERTIES }}
         run: echo "$GH_PROPERTIES" > ./github.properties
 
       - name: Build JAR AAR ⚙️🛠
