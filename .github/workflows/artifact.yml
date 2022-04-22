@@ -31,9 +31,9 @@ jobs:
         run: chmod +x gradlew
 
       - name: Set local properties
-      env:
-        KS_PROPERTIES: ${{ secrets.GH_PROPERTIES }}
-      run: echo "$GH_PROPERTIES" > ./github.properties
+        env:
+          KS_PROPERTIES: ${{ secrets.GH_PROPERTIES }}
+        run: echo "$GH_PROPERTIES" > ./github.properties
 
       - name: Build JAR AAR ⚙️🛠
         run: bash ./gradlew mylibrary:build mylibrary2:build
