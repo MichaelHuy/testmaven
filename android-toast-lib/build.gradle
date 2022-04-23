@@ -64,7 +64,7 @@ afterEvaluate {
                 from components.release
 
                 //artifact androidSourcesJar
-                artifact("$buildDir/outputs/aar/${mArtifactId}-debug.aar")
+                artifact("$buildDir/outputs/aar/android-toast-lib-debug.aar")
 
                 pom {
                     name = mLibraryName

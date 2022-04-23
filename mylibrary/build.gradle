@@ -63,7 +63,7 @@ afterEvaluate {
                 from components.release
 
                 // artifact androidSourcesJar
-                artifact("$buildDir/outputs/aar/${mArtifactId}-debug.aar")
+                artifact("$buildDir/outputs/aar/mylibrary-debug.aar")
 
                 pom {
                     name = mLibraryName
