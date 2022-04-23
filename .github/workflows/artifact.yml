@@ -36,10 +36,10 @@ jobs:
         run: echo "$GH_PROPERTIES" > ./github.properties
 
       - name: Build JAR AAR ⚙️🛠
-        run: bash ./gradlew mylibrary:build mylibrary2:build
+        run: bash ./gradlew mylibrary:build mylibrary2:build android-toast-lib:build
 
       - name: Publish to GitHub Package Registry 🚀
-        run: bash ./gradlew :mylibrary:publish :mylibrary2:publish
+        run: bash ./gradlew :mylibrary:publish :mylibrary2:publish :android-toast-lib:publish
         env:
           GPR_USER: ${{ github.actor }}
           GPR_KEY: ${{ secrets.PERSONAL_ACCESS_TOKEN }}

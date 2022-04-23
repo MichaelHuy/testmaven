@@ -7,12 +7,12 @@ apply plugin: 'maven-publish'  // 1. Apply plugin
 // 2. Declare library details
 ext {
     mGroupId = "com.huyle"
-    mArtifactId = "my-library2"
+    mArtifactId = "mylibrary2"
     mVersionCode = 1
-    mVersionName = "0.0.2"
+    mVersionName = "0.0.3"
 
-    mLibraryName = "MyLibrary2"
-    mLibraryDescription = "MyLibrary2 for simple things!"
+    mLibraryName = "myLibrary2"
+    mLibraryDescription = "myLibrary2 for simple things!"
 }
 
 
@@ -64,7 +64,9 @@ afterEvaluate {
 
                 from components.release
 
-                artifact androidSourcesJar
+                //artifact androidSourcesJar
+                // artifact androidSourcesJar
+                artifact("$buildDir/outputs/aar/${mArtifactId}-debug.aar")
 
                 pom {
                     name = mLibraryName
