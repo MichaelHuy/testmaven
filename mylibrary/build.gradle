@@ -5,10 +5,10 @@ plugins {
 apply plugin: 'maven-publish'  // 1. Apply plugin
 // 2. Declare library details
 ext {
-    mGroupId = "com.huyle"
+    mGroupId = "com.huyle.mylibrary"
     mArtifactId = "mylibrary"
     mVersionCode = 1
-    mVersionName = "0.0.6"
+    mVersionName = "0.0.7"
 
     mLibraryName = "mylibrary"
     mLibraryDescription = "mylibrary for simple things!"
