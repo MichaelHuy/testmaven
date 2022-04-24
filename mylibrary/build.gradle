@@ -60,28 +60,28 @@ task sourceJar(type: Jar) {
 // 4. Make configuration for publishing artifact.
 afterEvaluate {
     publishing {
-        // publications {
-        //     maven(MavenPublication) {
-        //         groupId mGroupId
-        //         artifactId mArtifactId
-        //         version mVersionName
+         publications {
+             maven(MavenPublication) {
+                 groupId mGroupId
+                 artifactId mArtifactId
+                 version mVersionName
 
-        //         //from components.release
+                 from components.release
 
-        //         artifact(sourceJar)
-        //         artifact("$buildDir/outputs/aar/mylibrary-release.aar")
+                 artifact(androidSourcesJar)
+                 //artifact("$buildDir/outputs/aar/mylibrary-release.aar")
 
-        //     }
-        // }
+             }
+         }
 
-        publications {
-        bar(MavenPublication) {
-                groupId mGroupId
-                artifactId mArtifactId
-                version mVersionName
-                artifact("$buildDir/outputs/aar/mylibrary-release.aar")
-            }
-        }
+//        publications {
+//        bar(MavenPublication) {
+//                groupId mGroupId
+//                artifactId mArtifactId
+//                version mVersionName
+//                artifact("$buildDir/outputs/aar/mylibrary-release.aar")
+//            }
+//        }
 
         def localProperties = new Properties()
         localProperties.load(new FileInputStream(rootProject.file("github.properties")))
