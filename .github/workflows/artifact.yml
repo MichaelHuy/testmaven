@@ -36,31 +36,41 @@ jobs:
         run: echo "$GH_PROPERTIES" > ./github.properties
 
       - name: Build JAR AAR ⚙️🛠
-        run: bash ./gradlew mylibrary:build mylibrary2:build android-toast-lib:build
+        run: bash ./gradlew mylibrary:build android-toast-lib:build
 
       - name: Publish to GitHub Package Registry 🚀
-        run: bash ./gradlew :mylibrary:publish :mylibrary2:publish :android-toast-lib:publish
+        run: bash ./gradlew :mylibrary:publish
+        # run: bash ./gradlew :mylibrary:publish :mylibrary2:publish :android-toast-lib:publish
         env:
           GPR_USER: ${{ github.actor }}
           GPR_KEY: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
-      # - name: Create Release ✅
-      #   id: create_release
-      #   uses: actions/create-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     tag_name: ${{ github.ref }}
-      #     release_name: ${{ github.ref }}
-      #     draft: true
-      #     prerelease: false
+      - name: Create Release ✅
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          draft: true
+          prerelease: false
 
       # - name: Upload Simple Library AAR 🗳
       #   uses: actions/upload-release-asset@v1
       #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       #   with:
       #     upload_url: ${{ steps.create_release.outputs.upload_url }}
       #     asset_path: simplelibrary/build/outputs/aar/simplelibrary-release.aar
       #     asset_name: simple-library.aar
       #     asset_content_type: application/aar
+
+      - name: Upload Android Artifacts file
+        uses: actions/upload-artifact@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        with:
+          name: pkardsdk-artifacts
+          path: |
+            mylibrary/build/outputs/aar/

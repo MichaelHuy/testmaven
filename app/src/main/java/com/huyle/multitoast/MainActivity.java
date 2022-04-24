@@ -13,10 +13,9 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+
 import com.huyle.multitoast.databinding.ActivityMainBinding;
 import com.huyle.mylibrary.Counter;
-import com.huyle.mylibrary2.Counter2;
-import com.test.identify.toast.Counter10;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,24 +48,24 @@ public class MainActivity extends AppCompatActivity {
 
         Counter counter = new Counter();
         counter.increment();
-        Counter2 counter2 = new Counter2();
-        counter2.increment();
-        counter2.increment();
+//        Counter2 counter2 = new Counter2();
+//        counter2.increment();
+//        counter2.increment();
 
-        Counter10 counter10 = new Counter10();
-        counter10.increment();
-        counter10.increment();
-        counter10.increment();
-        counter10.increment();
-        counter10.increment();
-        counter10.increment();
-        counter10.increment();
-        counter10.increment();
-        counter10.increment();
-        counter10.increment();
-        System.out.println("counter: " + counter.getValue());
-        System.out.println("counter2: " + counter2.getValue());
-        System.out.println("counter10: " + counter10.getValue());
+//        Counter10 counter10 = new Counter10();
+//        counter10.increment();
+//        counter10.increment();
+//        counter10.increment();
+//        counter10.increment();
+//        counter10.increment();
+//        counter10.increment();
+//        counter10.increment();
+//        counter10.increment();
+//        counter10.increment();
+//        counter10.increment();
+//        System.out.println("counter: " + counter.getValue());
+//        System.out.println("counter2: " + counter2.getValue());
+//        System.out.println("counter10: " + counter10.getValue());
     }
 
     @Override
