@@ -36,7 +36,8 @@ jobs:
         run: echo "$GH_PROPERTIES" > ./github.properties
 
       - name: Build JAR AAR ⚙️🛠
-        run: bash ./gradlew mylibrary:build android-toast-lib:build
+        # run: bash ./gradlew mylibrary:build android-toast-lib:build
+        run: bash ./gradlew mylibrary:build
 
       - name: Publish to GitHub Package Registry 🚀
         run: bash ./gradlew :mylibrary:publish
