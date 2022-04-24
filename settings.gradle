@@ -11,9 +11,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
     }
 }
 rootProject.name = "multitoast"
 include ':app'
+include ':mylibrary'
 //include ':mylibrary2'
 //include ':android-toast-lib'

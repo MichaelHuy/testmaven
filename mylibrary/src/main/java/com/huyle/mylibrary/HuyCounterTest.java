@@ -2,7 +2,7 @@ package com.huyle.mylibrary;
 /**
  *
  */
-public class Counter {
+public class HuyCounterTest {
     private int value;
 
     public int increment() {
