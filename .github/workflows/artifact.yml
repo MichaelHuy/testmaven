@@ -1,9 +1,9 @@
 name: Release
 on:
   push:
-    branches:
-      - main
-  pull_request:
+    paths-ignore:
+      - 'app/**'
+
 
 jobs:
   publish:
