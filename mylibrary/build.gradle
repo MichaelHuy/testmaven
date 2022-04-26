@@ -2,6 +2,18 @@ plugins {
     id 'com.android.library'
 }
 
+apply plugin: 'maven-publish'  // 1. Apply plugin
+// 2. Declare library details
+ext {
+    mGroupId = "com.huyle"
+    mArtifactId = "mylibrary"
+    mVersionCode = 1
+    mVersionName = "0.0.8"
+
+    mLibraryName = "mylibrary"
+    mLibraryDescription = "mylibrary for simple things!"
+}
+
 android {
     compileSdk 32
 
@@ -25,7 +37,68 @@ android {
     }
 }
 
-dependencies {
+
+
+// 3. Declare task for creation of android sources.
+task androidSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from android.sourceSets.main.java.srcDirs
+}
+
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier "sources"
+}
+
+def getVersionName = { ->
+    return "0.0.8" // Replace with version Name
+}
+
+def getArtificatId = { ->
+    return "mylibrary" // Replace with library name ID
+}
+
+ publishing {
+        //  publications {
+        //      maven(MavenPublication) {
+        //          groupId mGroupId
+        //          artifactId mArtifactId
+        //          version mVersionName
+
+        //          from components.release
+
+        //          artifact(androidSourcesJar)
+        //          //artifact("$buildDir/outputs/aar/mylibrary-release.aar")
+
+        //      }
+        //  }
+
+       publications {
+       bar(MavenPublication) {
+            groupId 'com.huyle'
+            artifactId getArtificatId()
+            version getVersionName()
+            artifact("$buildDir/outputs/aar/${getArtificatId()}-release.aar")
+           }
+       }
+
+        def localProperties = new Properties()
+        localProperties.load(new FileInputStream(rootProject.file("github.properties")))
+
+
+        // 5. Update repository details and credentials.
+        repositories {//MichaelHuy/testmaven
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/MichaelHuy/testmaven")
+                credentials {
+                    username = localProperties.getProperty("gpr.usr")
+                    password = localProperties.getProperty("gpr.key")
+                }
+            }
+        }
+    }
+    dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
@@ -33,3 +106,50 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
+
+// 4. Make configuration for publishing artifact.
+// afterEvaluate {
+//     publishing {
+//         //  publications {
+//         //      maven(MavenPublication) {
+//         //          groupId mGroupId
+//         //          artifactId mArtifactId
+//         //          version mVersionName
+
+//         //          from components.release
+
+//         //          artifact(androidSourcesJar)
+//         //          //artifact("$buildDir/outputs/aar/mylibrary-release.aar")
+
+//         //      }
+//         //  }
+
+//        publications {
+//        bar(MavenPublication) {
+//             groupId 'com.huyle'
+//             artifactId getArtificatId()
+//             version getVersionName()
+//             artifact("$buildDir/outputs/aar/${getArtificatId()}-release.aar")
+//            }
+//        }
+
+//         def localProperties = new Properties()
+//         localProperties.load(new FileInputStream(rootProject.file("github.properties")))
+
+
+//         // 5. Update repository details and credentials.
+//         repositories {//MichaelHuy/testmaven
+//             maven {
+//                 name = "GitHubPackages"
+//                 url = uri("https://maven.pkg.github.com/MichaelHuy/testmaven")
+//                 credentials {
+//                     username = localProperties.getProperty("gpr.usr")
+//                     password = localProperties.getProperty("gpr.key")
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// Assembling should be performed before publishing package
+// publish.dependsOn assemble

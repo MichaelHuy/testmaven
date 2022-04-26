@@ -4,6 +4,38 @@ plugins {
     id 'com.android.library' version '7.1.2' apply false
 }
 
+
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("github.properties")))
+
+
+/****GitHubPackages Path and credentials***/
+repositories {
+    maven {
+        name = "GitHubPackages"
+        /*  Configure path to the library hosted on GitHub Packages Registry
+         *  Replace UserID with package owner userID and REPOSITORY with the repository name
+         *  e.g. "https://maven.pkg.github.com/enefce/AndroidLibraryForGitHubPackagesDemo"
+         */
+        //url = uri("https://maven.pkg.github.com/UserID/REPOSITORY")
+        url = uri("https://maven.pkg.github.com/MichaelHuy/testmaven")
+
+        credentials {
+            /**Create github.properties in root project folder file with gpr.usr=GITHUB_USER_ID  & gpr.key =PERSONAL_ACCESS_TOKEN**/
+            username = localProperties.getProperty("gpr.usr")
+            password = localProperties.getProperty("gpr.key")
+        }
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://maven.pkg.github.com/MichaelHuy/testmaven' }
+    }
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

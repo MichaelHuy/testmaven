@@ -13,8 +13,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+
 import com.huyle.multitoast.databinding.ActivityMainBinding;
-import com.huyle.mylibrary.Counter;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -45,7 +45,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        counter = new Counter();
+        HuyCounterTest counter = new HuyCounterTest();
+        counter.increment();
+//        Counter2 counter2 = new Counter2();
+//        counter2.increment();
+//        counter2.increment();
+
+//        Counter10 counter10 = new Counter10();
+//        counter10.increment();
+//        counter10.increment();
+//        counter10.increment();
+//        counter10.increment();
+//        counter10.increment();
+//        counter10.increment();
+//        counter10.increment();
+//        counter10.increment();
+//        counter10.increment();
+//        counter10.increment();
+//        System.out.println("counter: " + counter.getValue());
+//        System.out.println("counter2: " + counter2.getValue());
+//        System.out.println("counter10: " + counter10.getValue());
     }
 
     @Override

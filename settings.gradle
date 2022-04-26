@@ -1,18 +1,26 @@
+import org.gradle.api.initialization.resolve.RepositoriesMode
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
         google()
         mavenCentral()
+//        maven { url 'https://maven.pkg.github.com/MichaelHuy/testmaven' }
     }
 }
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+
+//dependencyResolutionManagement {
+////    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//    //repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+//    repositories {
+//        google()
+//        jcenter() // Warning: this repository is going to shut down soon
+//        mavenCentral()
+////        maven { url 'https://maven.pkg.github.com/MichaelHuy/testmaven' }
+//    }
+//}
 rootProject.name = "multitoast"
 include ':app'
 include ':mylibrary'
-include ':mylibrary2'
+//include ':mylibrary2'
+//include ':android-toast-lib'

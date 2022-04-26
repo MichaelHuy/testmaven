@@ -3,18 +3,16 @@ plugins {
 }
 
 apply plugin: 'maven-publish'  // 1. Apply plugin
-
 // 2. Declare library details
 ext {
     mGroupId = "com.huyle"
-    mArtifactId = "mylibrary2"
+    mArtifactId = "android-toast-lib"
     mVersionCode = 1
     mVersionName = "0.0.3"
 
-    mLibraryName = "myLibrary2"
-    mLibraryDescription = "myLibrary2 for simple things!"
+    mLibraryName = "android-toast-lib"
+    mLibraryDescription = "android-toast-lib for simple things!"
 }
-
 
 android {
     compileSdk 32
@@ -48,6 +46,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
 
+
 // 3. Declare task for creation of android sources.
 task androidSourcesJar(type: Jar) {
     archiveClassifier.set('sources')
@@ -65,7 +64,7 @@ afterEvaluate {
                 from components.release
 
                 artifact androidSourcesJar
-                artifact("$buildDir/outputs/aar/mylibrary2-release.aar")
+                artifact("$buildDir/outputs/aar/android-toast-lib-release.aar")
 
                 pom {
                     name = mLibraryName
